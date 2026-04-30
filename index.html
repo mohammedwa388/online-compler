@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online compiler</title>
+  </head>
+  <body>
+    <!-- TopAppBar -->
+    <header class="header">
+      <div>
+        <span>DevFlow IDE</span>
+        <nav class="">
+          <a
+            class="font-mono text-sm tracking-tight text-indigo-500 dark:text-[#6366F1] border-b-2 border-indigo-500 font-semibold h-14 flex items-center"
+            href="#"
+            >Dashboard</a
+          >
+          <a
+            class="font-mono text-sm tracking-tight text-slate-400 dark:text-slate-400 hover:text-slate-200 h-14 flex items-center hover:bg-slate-800 dark:hover:bg-[#334155] transition-colors px-2"
+            href="#"
+            >Projects</a
+          >
+          <a
+            class="font-mono text-sm tracking-tight text-slate-400 dark:text-slate-400 hover:text-slate-200 h-14 flex items-center hover:bg-slate-800 dark:hover:bg-[#334155] transition-colors px-2"
+            href="#"
+            >Marketplace</a
+          >
+          <a
+            class="font-mono text-sm tracking-tight text-slate-400 dark:text-slate-400 hover:text-slate-200 h-14 flex items-center hover:bg-slate-800 dark:hover:bg-[#334155] transition-colors px-2"
+            href="#"
+            >Docs</a
+          >
+        </nav>
+      </div>
+      <div class="flex items-center gap-3">
+        <button
+          class="material-symbols-outlined text-slate-400 hover:bg-slate-800 p-2 rounded transition-colors"
+          data-icon="notifications"
+        >
+          notifications
+        </button>
+        <button
+          class="material-symbols-outlined text-slate-400 hover:bg-slate-800 p-2 rounded transition-colors"
+          data-icon="settings"
+        >
+          settings
+        </button>
+        <button
+          class="bg-indigo-500 text-white px-4 py-1.5 rounded-sm font-mono text-sm font-semibold scale-95 active:opacity-80 transition-transform"
+        >
+          Deploy
+        </button>
+        <img
+          alt="User avatar"
+          class="w-8 h-8 rounded-full border border-slate-700"
+          data-alt="professional male software engineer portrait, clean lighting, tech office background"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPZOHABpN1cOIa7JsNfnnk8RST41u9XkoZnFYa0WPKrKyFeTJsA0PUlIQZ7312PrFEXJ0us_71cAx5FIHelqndpy-Q598SjBqYCNwhb606hDVoT-Vk5sxNcXxcvK1aEgH6GZmaOILmxzJxqzhKE78clU-AyXuJtRv7hQrAcB_GlvoSW6Uc6caJkvmg5CISjPw2XJLLsJkTvgC9NN3j4UOKp-c88NRx5MjHZG0Okw0ptWssI0-adH-XU54tIWBDLaD4Hpe3FtdLpEo"
+        />
+      </div>
+    </header>
+    <main class="pt-14">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden pt-20 pb-32 px-gutter">
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <h1 class="font-headline-lg text-headline-lg mb-6 leading-tight">
+              Code, Compile,
+              <span class="text-primary">Conquer</span>.
+            </h1>
+            <p class="text-on-surface-variant text-body-md mb-8 max-w-lg">
+              The ultimate web-based IDE designed for peak performance.
+              Experience lightning-fast execution, multi-language support, and
+              seamless cloud synchronization.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <button
+                class="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-caps flex items-center gap-2 hover:brightness-110 transition-all"
+              >
+                Try it Now
+                <span
+                  class="material-symbols-outlined text-sm"
+                  data-icon="arrow_forward"
+                  >arrow_forward</span
+                >
+              </button>
+              <button
+                class="border border-outline text-on-surface px-8 py-3 rounded-lg font-label-caps hover:bg-surface-variant transition-all"
+              >
+                View Documentation
+              </button>
+            </div>
+            <div class="mt-12 flex items-center gap-6 text-slate-500">
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  data-icon="bolt"
+                  >bolt</span
+                >
+                <span class="text-body-sm font-mono uppercase tracking-widest"
+                  >Sub-ms Latency</span
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  data-icon="cloud"
+                  >cloud</span
+                >
+                <span class="text-body-sm font-mono uppercase tracking-widest"
+                  >Auto-Sync</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Visual Representation of Editor -->
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-indigo-500/20 rounded-xl blur-2xl group-hover:bg-indigo-500/30 transition duration-1000"
+            ></div>
+            <div
+              class="relative bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden shadow-2xl"
+            >
+              <div
+                class="h-8 bg-surface-container-high flex items-center px-4 border-b border-outline-variant"
+              >
+                <div class="flex gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                </div>
+                <div
+                  class="mx-auto flex items-center gap-2 bg-surface-container px-3 py-1 rounded-sm border border-outline-variant"
+                >
+                  <span
+                    class="material-symbols-outlined text-xs text-primary"
+                    data-icon="code"
+                    >code</span
+                  >
+                  <span class="text-[10px] font-mono text-on-surface-variant"
+                    >main.rs — Compiler Project</span
+                  >
+                </div>
+              </div>
+              <div class="flex">
+                <div
+                  class="w-12 bg-surface-container-low border-r border-outline-variant pt-4 flex flex-col items-center gap-2 font-mono text-[11px] text-slate-600"
+                >
+                  <span>1</span><span>2</span><span>3</span><span>4</span
+                  ><span>5</span><span>6</span><span>7</span><span>8</span
+                  ><span>9</span>
+                </div>
+                <div
+                  class="p-4 font-code-block text-code-block leading-relaxed"
+                >
+                  <p>
+                    <span class="text-indigo-400">fn</span>
+                    <span class="text-yellow-200">main</span>() {
+                  </p>
+                  <p class="pl-4">
+                    <span class="text-indigo-400">let</span>
+                    greeting =
+                    <span class="text-green-300">"Hello, DevFlow!"</span>;
+                  </p>
+                  <p class="pl-4 text-slate-500">// Lightning fast execution</p>
+                  <p class="pl-4">
+                    <span class="text-indigo-400">println!</span>(<span
+                      class="text-green-300"
+                      >"{}"</span
+                    >, greeting);
+                  </p>
+                  <p
+                    class="pl-4 bg-indigo-500/10 border-l-2 border-indigo-500 -ml-4 pl-[14px]"
+                  >
+                    <span class="text-indigo-400">match</span>
+                    compile_status {
+                  </p>
+                  <p class="pl-8">
+                    Status::Success =&gt;
+                    <span class="text-indigo-400">deploy</span>(),
+                  </p>
+                  <p class="pl-8">
+                    _ =&gt;
+                    <span class="text-indigo-400">panic!</span>(<span
+                      class="text-red-400"
+                      >"Failed"</span
+                    >),
+                  </p>
+                  <p class="pl-4">}</p>
+                  <p>}</p>
+                </div>
+              </div>
+              <div
+                class="bg-black/40 p-3 border-t border-outline-variant font-mono text-[11px] flex justify-between items-center"
+              >
+                <div class="flex items-center gap-4">
+                  <span class="text-green-400 flex items-center gap-1"
+                    ><span
+                      class="material-symbols-outlined text-[12px]"
+                      data-icon="check_circle"
+                      >check_circle</span
+                    >
+                    Ready</span
+                  >
+                  <span class="text-slate-500">UTF-8</span>
+                </div>
+                <div class="text-indigo-400">Rust 1.75.0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Bento Grid -->
+      <section class="py-24 bg-surface-container-lowest">
+        <div class="max-w-7xl mx-auto px-gutter">
+          <div class="text-center mb-16">
+            <h2 class="font-headline-md text-headline-md mb-4">
+              Built for the Modern Architect
+            </h2>
+            <p class="text-on-surface-variant max-w-2xl mx-auto">
+              Engineered with precision to ensure your focus remains entirely on
+              the logic, not the tooling.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Large Feature -->
+            <div
+              class="md:col-span-2 bg-surface-container border border-outline-variant rounded-xl p-8 relative overflow-hidden group"
+            >
+              <div class="relative z-10">
+                <span
+                  class="material-symbols-outlined text-primary text-4xl mb-4"
+                  data-icon="bolt"
+                  >bolt</span
+                >
+                <h3 class="font-headline-md text-xl mb-3">
+                  Lightning-Fast Compilation
+                </h3>
+                <p class="text-on-surface-variant max-w-md">
+                  Our edge-compute infrastructure delivers sub-millisecond cold
+                  starts and compilation times that rival local machines. Stop
+                  waiting for binaries to link.
+                </p>
+              </div>
+              <div
+                class="absolute bottom-0 right-0 w-1/2 opacity-20 group-hover:opacity-40 transition-opacity"
+              >
+                <img
+                  alt="Tech schematic"
+                  class="object-cover"
+                  data-alt="abstract technical schematic of high-speed fiber optics and digital circuits, glowing indigo and cyan colors"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdJVXPnaQExP5uIZLBWUqdnGxl15SdxaKhDlINmDN9u3sCXb9Y0_ZhEVCPbcsVw0FTifkXi1QlfFoVhpqinWnI-IP4UETZdvTgZELS1TWdJP8ngaPhyF58B50WOiNdpeOpGH2FFRmGVBx4_Bk-r_j31Ro-9KLYrj18EehvlW6bkAw3Ghf3HUgA5WxGcL3jWn0MXqs8Zv3a1FM5qzmDfxHt3CRhE-vUILUEZZplOyrtsZghl69qtglZRsGmNKugfNWua7PzXIxbOTs"
+                />
+              </div>
+            </div>
+            <!-- Language Support -->
+            <div
+              class="bg-surface-container border border-outline-variant rounded-xl p-8 flex flex-col justify-between"
+            >
+              <div>
+                <span
+                  class="material-symbols-outlined text-primary text-4xl mb-4"
+                  data-icon="language"
+                  >language</span
+                >
+                <h3 class="font-headline-md text-xl mb-3">50+ Languages</h3>
+                <p class="text-on-surface-variant text-body-sm">
+                  From legacy C to modern Go and Rust, DevFlow supports the
+                  entire developer spectrum out of the box.
+                </p>
+              </div>
+              <div class="grid grid-cols-3 gap-2 mt-6">
+                <div
+                  class="bg-surface-container-high p-2 rounded border border-outline-variant flex items-center justify-center font-mono text-[10px] text-slate-400"
+                >
+                  PYTHON
+                </div>
+                <div
+                  class="bg-surface-container-high p-2 rounded border border-outline-variant flex items-center justify-center font-mono text-[10px] text-slate-400"
+                >
+                  TYPESCRIPT
+                </div>
+                <div
+                  class="bg-surface-container-high p-2 rounded border border-outline-variant flex items-center justify-center font-mono text-[10px] text-slate-400"
+                >
+                  GO
+                </div>
+              </div>
+            </div>
+            <!-- Cloud Sync -->
+            <div
+              class="bg-surface-container border border-outline-variant rounded-xl p-8"
+            >
+              <span
+                class="material-symbols-outlined text-primary text-4xl mb-4"
+                data-icon="sync"
+                >sync</span
+              >
+              <h3 class="font-headline-md text-xl mb-3">Cloud Persistence</h3>
+              <p class="text-on-surface-variant text-body-sm">
+                Your workspace follows you. Sessions are instantly persisted
+                across devices, maintaining your undo history and terminal
+                state.
+              </p>
+            </div>
+            <!-- Collaboration -->
+            <div
+              class="md:col-span-2 bg-surface-container border border-outline-variant rounded-xl p-8 flex items-center gap-8"
+            >
+              <div class="flex-1">
+                <span
+                  class="material-symbols-outlined text-primary text-4xl mb-4"
+                  data-icon="groups"
+                  >groups</span
+                >
+                <h3 class="font-headline-md text-xl mb-3">
+                  Real-time Pair Programming
+                </h3>
+                <p class="text-on-surface-variant">
+                  Invite collaborators with a single link. Debug together,
+                  conduct code reviews, or mentor juniors in a shared
+                  environment with low-latency cursor tracking.
+                </p>
+              </div>
+              <div class="hidden lg:flex flex-col gap-2">
+                <div
+                  class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden"
+                >
+                  <img
+                    alt="Avatar"
+                    data-alt="portrait of a focused developer in a modern studio"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVNeQ-WRRY5nHjeAJHYmzycym_FyhN7_x7TiYuuGTuHn5rERa7Di0edCiMGS94hjUYFO9TwRFyH-KxtQjggtDRW5I6URhYR_JbyjupyqZVc2BJPeLJ96SCix8UxkCDKQ_RsAuH8zCibrP1YLZHxpw_oKU3pfmiOY3AI0cW9uNpdzDqwVeciNxkOo7A6acXG_lHV10PkEDRKND432z1vbBxsecIA4NveCe3WEU7Zy1U4_djPwZMpOT50OuZTxSqupWwJaM7OKOnWkM"
+                  />
+                </div>
+                <div
+                  class="w-10 h-10 rounded-full border-2 border-secondary overflow-hidden -mt-4 ml-4"
+                >
+                  <img
+                    alt="Avatar"
+                    data-alt="portrait of a smiling woman developer"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAnm9XXlSmWOu8Ecpt7mf6wJNcZvGrBKnbquIDqfwIUquAPKH3K9A5R8CsW6h5PY-3ZiZPGAznVcDIG69tw4LSYTxgfUWCEIyFKROgg5A1cztIRKUrM57Ffa0lCxwhrhcrP00d8JXFehpLXv6LtktJN2uCONhWn-5KzJUpMuqb6v7tYSUzHrGN-8Q1HHTbE0Pj9stZJC05BU_Yf6WyCoFDnvoL3Ie7UOlrYW7O4o6VF4btMk5_2Rey58MlezJcko2AJU5cGJYmyUU"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Language Support Grid -->
+      <section class="py-24 border-y border-outline-variant">
+        <div class="max-w-7xl mx-auto px-gutter text-center">
+          <h2
+            class="font-label-caps text-on-surface-variant mb-12 uppercase tracking-[0.2em]"
+          >
+            Native Performance for Modern Stacks
+          </h2>
+          <div
+            class="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60 hover:grayscale-0 transition-all duration-500"
+          >
+            <div class="flex flex-col items-center gap-3">
+              <img
+                alt="Python"
+                class="w-12 h-12"
+                data-alt="Python logo icon"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSBEQo9fndy8skJJ7Y8SvM21KtGJmI6qT_rApiKfnisF92li9PsV8Mi1OMMupaEQFL-fSgaemVnW-Y-HJ660xLnOwC2otE_tEH9R4KypxkqdurN6jY6YLvilaECPckanjbKFAY3EjHXrkS4Q7xFSxTYHry_C011ofMc09EiGA2173Pn2waOLPmhGNrVOP6JORYIciOvApjG7Kxq-gqKRgXPkkq8Vv6uFH5C3qCCXicbm3Bbvr1ZkJQK4sOEKHfMNed9KSllpySWaU"
+              />
+              <span class="font-mono text-[10px] text-slate-500">PYTHON</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <img
+                alt="JS"
+                class="w-12 h-12"
+                data-alt="JavaScript logo icon"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJcRmHB-8VOSNkSb7FnMLDlB-7xgcYXQnJi1PaACRuknp04EWjvzLyZuMrmfskFmxDcfUnGHqrSu_YTr_CC9R2mE8gsRlsTPNc_0OfaXnqobqds-iotB6gwG5FErJ0eHyVNDjxUN301ig3B6oxYSmrJl-XP02-nQkSUHlMpRdy2KG-CXNIQ0lkzbyxZaWsCv10vGnl9sBmynw8mn3XIkvrCXKH0qijoftCO-iks3oVj5NRfKK51dhIsuZdXSyHHEHNbde4jwkPM80"
+              />
+              <span class="font-mono text-[10px] text-slate-500">JS</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <img
+                alt="C++"
+                class="w-12 h-12"
+                data-alt="C++ logo icon"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7tQlonoQc6dnlBmkN0NtGcDJ9UhU8X35XkEuhd0lv8kdwewtVS5Znpv-yGZRS7uu3gq9Jr4e4eY0aj-evb8KV_0w8CLRM61XByHx-pLMgYo-_ivGcLTOtNbf0PGMxbV2zyrVwBpHp5R37pPRBfr9goKGWWSEfwKas4TYM6-Fs9K3e_jA4jArtI8sMf-hjCytVyyPDnEQNwCw0zSdxSXiOPx3K-ZXIU-h3JYAW8TkhRVGSZjL-KRM5UpzXc2IyY-g8yTDvTJE1bBA"
+              />
+              <span class="font-mono text-[10px] text-slate-500">C++</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <img
+                alt="Go"
+                class="w-12 h-12"
+                data-alt="Go programming language logo icon"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq6itx0PusB0FxsNfixhzlbmh_QD-N_zg-o1BDH943ROLoJWXnraZgkqhbiBT-_vi1EWvT1DBUU8VebAjCUwqygF69HN4Vk7Ib5L10Gk4b2YS9noj3LmTwB2nq9pkHlVkMzQTAwGqNZ6ALhfuzdoY3b7jAG6xJsbUqyJ5St7bd1TyB7B4P8VrQyq6wE9VWlpDbWmlCZxVY6kgK5uhb7soG4R6prh4otVNzaoz1qO-0GFSY5zJ9lVGgWoOW-V2dEapmn8Gfs-VlQ18"
+              />
+              <span class="font-mono text-[10px] text-slate-500">GO</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <img
+                alt="Rust"
+                class="w-12 h-12"
+                data-alt="Rust programming language logo icon"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5kNH8vpNxunbbGT4fkv1B6Az6V0fJ4RzV8cSYzYJVYmQFf2cgmWujlb2td3BgZ5d73QJEGPwrWaD_ny8lkJG4jjzSrRWNlHP07SEVAPvETKZ8Peoc1kLCPBEkZ9v_AUwbxMfO6Nqikgg1N8AfMKsAOPOTXwd5ecVYFL-KNikS2mJP7-Du9geUCUTskzgZhwLLNQrdxA_loyAwVlQnSF-2f_80-acvIqjPpuG4Qne1YBj8Ekn6B9VqQSHbnjhm4jYPeRPKGGyiBqw"
+              />
+              <span class="font-mono text-[10px] text-slate-500">RUST</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonial -->
+      <section class="py-24 px-gutter">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="mb-8">
+            <span
+              class="material-symbols-outlined text-primary text-5xl"
+              data-icon="format_quote"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >format_quote</span
+            >
+          </div>
+          <p class="font-headline-md italic mb-10 text-on-surface">
+            "DevFlow has completely replaced my local dev environment for rapid
+            prototyping. The speed of the compiler is frankly terrifying. It
+            feels like the code finishes executing before I've even released the
+            keystrokes."
+          </p>
+          <div class="flex items-center justify-center gap-4">
+            <img
+              alt="Sarah Chen"
+              class="w-12 h-12 rounded-full border border-primary"
+              data-alt="portrait of a professional woman technologist in a minimalist setting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsNvc8zflqbO_aOrGiITmsD_gqo80P0qbkHClcA-5PoS4jDASIw3xnPZKSQi8MIwcVbnvXajLv_dx8PSpZXBnzjza0fzVUi696Of0hHJD9vxjujOS07j3I4S5sBmopDNg8aejKg31Xp4rbli4veeayK6yISBgz2_5Hy42cvHXRGJLEyZV0VRuR9ED67rRsNLnEK_hQ98pl0NOnMXkvYQ8xzUa_XxQZZhgbC8Y9SuByVYmcrpoCG3FcFi7iycxwYJSS5hI0xqdehkc"
+            />
+            <div class="text-left">
+              <div class="font-bold text-on-surface">Alex Rivera</div>
+              <div class="text-sm text-slate-500">
+                Principal Engineer, Quantum Systems
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CTA -->
+      <section class="py-20">
+        <div class="max-w-5xl mx-auto px-gutter">
+          <div
+            class="bg-primary-container rounded-2xl p-12 text-center relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 opacity-10"
+              style="
+                background-image: radial-gradient(
+                  circle at 2px 2px,
+                  white 1px,
+                  transparent 0
+                );
+                background-size: 24px 24px;
+              "
+            ></div>
+            <div class="relative z-10">
+              <h2 class="font-headline-lg text-on-primary-container mb-6">
+                Ready to enter flow state?
+              </h2>
+              <p
+                class="text-on-primary-container/80 mb-8 text-body-md max-w-xl mx-auto"
+              >
+                Join 100k+ developers who have optimized their workflow with the
+                world's most precise online compiler.
+              </p>
+              <button
+                class="bg-on-primary-container text-primary px-10 py-4 rounded-xl font-label-caps text-lg shadow-xl hover:-translate-y-1 transition-transform"
+              >
+                Start Coding for Free
+              </button>
+              <p class="mt-4 text-xs text-on-primary-container/60 font-mono">
+                NO CREDIT CARD REQUIRED • INSTANT SETUP
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="bg-slate-950 dark:bg-[#0F172A] border-slate-900 dark:border-[#1E293B] full-width border-t flat flex justify-between items-center py-6 px-8 w-full mt-20"
+    >
+      <div class="flex flex-col gap-2">
+        <div class="font-bold text-slate-300">DevFlow IDE</div>
+        <p class="font-sans text-xs text-slate-500">
+          © 2024 DevFlow Systems. Engineered for speed.
+        </p>
+      </div>
+      <div class="flex gap-8">
+        <a
+          class="font-sans text-xs text-slate-600 hover:text-slate-400 hover:underline decoration-indigo-500 opacity-80 hover:opacity-100"
+          href="#"
+          >Privacy</a
+        >
+        <a
+          class="font-sans text-xs text-slate-600 hover:text-slate-400 hover:underline decoration-indigo-500 opacity-80 hover:opacity-100"
+          href="#"
+          >Terms</a
+        >
+        <a
+          class="font-sans text-xs text-slate-600 hover:text-slate-400 hover:underline decoration-indigo-500 opacity-80 hover:opacity-100"
+          href="#"
+          >Status</a
+        >
+        <a
+          class="font-sans text-xs text-slate-600 hover:text-slate-400 hover:underline decoration-indigo-500 opacity-80 hover:opacity-100 text-indigo-400"
+          href="#"
+          >API</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
