@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/ideBoard.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <title>DevFlow IDE</title>
+  </head>
+  <body>
+    <!-- TOAST NOTIFICATION — مطلوبة من showToast() -->
+    <div id="toast" class="notif-toast"></div>
+
+    <!-- CONTEXT MENU — مطلوبة من showCtxMenu() و ctxAction() -->
+    <div class="ctx-menu" id="ctxMenu">
+      <div class="ctx-item" onclick="ctxAction('open')">📂 Open File</div>
+      <div class="ctx-item" onclick="ctxAction('rename')">✏️ Rename</div>
+      <div class="ctx-item" onclick="ctxAction('copy')">📋 Copy Path</div>
+      <div class="ctx-sep"></div>
+      <div class="ctx-item" onclick="ctxAction('delete')">🗑 Delete</div>
+    </div>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="logo"><span>DevFlow</span> <span>IDE</span></div>
+      <nav class="nav">
+        <!-- navClick() مطلوبة -->
+        <a href="#" class="active" onclick="navClick(event, this)">Dashboard</a>
+        <a href="#" onclick="navClick(event, this)">Projects</a>
+        <a href="#" onclick="navClick(event, this)">Docs</a>
+      </nav>
+      <div class="topbar-actions">
+        <!-- id="runBtn" مطلوب من runCode() -->
+        <button class="btn btn-run" id="runBtn" onclick="runCode()">
+          ▶ Run
+        </button>
+        <!-- saveFile() مطلوبة -->
+        <button class="btn btn-save" onclick="saveFile()">💾 Save</button>
+      </div>
+      <div class="topbar-icons">
+        <button
+          class="icon-btn"
+          title="Notifications"
+          onclick="showToast('No new notifications', 'info')"
+        >
+          🔔
+        </button>
+        <button
+          class="icon-btn"
+          title="Settings"
+          onclick="showToast('Settings coming soon...', 'info')"
+        >
+          ⚙️
+        </button>
+        <div
+          class="avatar"
+          title="Profile"
+          onclick="showToast('Logged in as: User', 'info')"
+        >
+          U
+        </div>
+      </div>
+    </header>
+
+    <!-- WORKSPACE -->
+    <div class="workspace">
+      <!-- ACTIVITY BAR -->
+      <div class="activity-bar">
+        <!-- toggleSidebar() و actClick() مطلوبتين -->
+        <div
+          class="act-btn active"
+          title="Explorer"
+          onclick="toggleSidebar(this)"
+        >
+          📁
+        </div>
+        <div class="act-btn" title="Search" onclick="actClick(this)">🔍</div>
+        <div class="act-btn" title="Source Control" onclick="actClick(this)">
+          ⑂
+        </div>
+        <div class="act-btn" title="Extensions" onclick="actClick(this)">
+          🔌
+        </div>
+        <div class="act-spacer"></div>
+        <div
+          class="act-btn"
+          title="Account"
+          onclick="showToast('Account settings', 'info')"
+        >
+          👤
+        </div>
+        <div
+          class="act-btn"
+          title="Settings"
+          onclick="showToast('Settings', 'info')"
+        >
+          ⚙
+        </div>
+      </div>
+
+      <!-- SIDEBAR — id="sidebar" مطلوب من toggleSidebar() -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <span class="sidebar-title">Explorer: Compiler</span>
+          <span
+            class="sidebar-dots"
+            onclick="showToast('Sidebar options', 'info')"
+            >···</span
+          >
+        </div>
+        <!-- id="fileTree" + oncontextmenu و onclick على كل item -->
+        <div class="file-tree" id="fileTree">
+          <!-- toggleFolder() مطلوبة للـ folders -->
+          <div
+            class="tree-item tree-indent-1"
+            onclick="toggleFolder(this)"
+            oncontextmenu="showCtxMenu(event)"
+          >
+            <span class="caret">▼</span>
+            <span class="icon">📂</span>
+            <span class="label">src</span>
+          </div>
+
+          <!-- openTab() مطلوبة للـ files -->
+          <div
+            class="tree-item tree-indent-2 selected"
+            onclick="openTab('main.py', '🐍')"
+            oncontextmenu="showCtxMenu(event)"
+          >
+            <span class="icon">🐍</span>
+            <span class="label">main.py</span>
+          </div>
+
+          <div
+            class="tree-item tree-indent-2"
+            onclick="openTab('utils.py', '🐍')"
+            oncontextmenu="showCtxMenu(event)"
+          >
+            <span class="icon">🐍</span>
+            <span class="label">utils.py</span>
+          </div>
+
+          <div
+            class="tree-item tree-indent-1"
+            onclick="toggleFolder(this)"
+            oncontextmenu="showCtxMenu(event)"
+          >
+            <span class="caret">▶</span>
+            <span class="icon">📁</span>
+            <span class="label">tests</span>
+          </div>
+
+          <div
+            class="tree-item tree-indent-1"
+            onclick="openTab('requirements.txt', '⚙️')"
+            oncontextmenu="showCtxMenu(event)"
+          >
+            <span class="icon">⚙️</span>
+            <span class="label">requirements.txt</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- EDITOR AREA -->
+      <div class="editor-area">
+        <div class="editor-content">
+          <!-- TABS — id="tabsBar" مطلوب من openTab() -->
+          <div class="tabs" id="tabsBar">
+            <!-- data-file مطلوب من switchTab() -->
+            <div
+              class="tab active"
+              data-file="main.py"
+              onclick="switchTab(this)"
+            >
+              <span class="tab-icon">🐍</span>
+              main.py
+              <span class="tab-close" onclick="closeTab(event, this)">✕</span>
+            </div>
+            <div class="tab" data-file="utils.py" onclick="switchTab(this)">
+              <span class="tab-icon">🐍</span>
+              utils.py
+              <span class="tab-close" onclick="closeTab(event, this)">✕</span>
+            </div>
+          </div>
+
+          <!-- CODE — onclick="codeClick(event)" مطلوب لتحديث الـ cursor position -->
+          <div class="code-view" id="codeView" onclick="codeClick(event)">
+            <div class="code-line">
+              <span class="ln">1</span>
+              <span class="code"
+                ><span class="kw">import</span>
+                <span class="fn">http.server</span></span
+              >
+            </div>
+            <div class="code-line">
+              <span class="ln">2</span>
+              <span class="code"
+                ><span class="kw">import</span>
+                <span class="fn">socketserver</span></span
+              >
+            </div>
+            <div class="code-line">
+              <span class="ln">3</span>
+              <span class="code"></span>
+            </div>
+            <div class="code-line">
+              <span class="ln">4</span>
+              <span class="code"
+                ><span class="cm"
+                  ># Configuration for the DevFlow Server</span
+                ></span
+              >
+            </div>
+            <div class="code-line">
+              <span class="ln">5</span>
+              <span class="code"
+                >PORT <span class="op">=</span>
+                <span class="nm">8000</span></span
+              >
+            </div>
+            <div class="code-line">
+              <span class="ln">6</span>
+              <span class="code"
+                >Handler <span class="op">=</span> http.server.<span class="fn"
+                  >SimpleHTTPRequestHandler</span
+                ></span
+              >
+            </div>
+            <div class="code-line">
+              <span class="ln">7</span>
+              <span class="code"></span>
+            </div>
+            <div class="code-line highlighted">
+              <span class="ln">8</span>
+              <span class="code"
+                ><span class="kw">with</span> socketserver.<span class="fn"
+                  >TCPServer</span
+                >(<span class="st">""</span>, PORT), Handler)
+                <span class="kw">as</span> httpd:</span
+              >
+            </div>
+            <div class="code-line">
+              <span class="ln">9</span>
+              <span class="code"
+                >&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">print</span>(<span
+                  class="st"
+                  >"Server running on localhost:8000"</span
+                >)</span
+              >
+            </div>
+            <div class="code-line">
+              <span class="ln">10</span>
+              <span class="code"
+                >&nbsp;&nbsp;&nbsp;&nbsp;httpd.<span class="fn"
+                  >serve_forever</span
+                >()</span
+              >
+            </div>
+          </div>
+
+          <!-- TERMINAL — id="terminalPanel" مطلوب من toggleTerminal() -->
+          <div class="terminal-panel" id="terminalPanel">
+            <div class="terminal-tabs">
+              <!-- switchTermTab() مطلوبة -->
+              <div class="term-tab active" onclick="switchTermTab(this)">
+                Terminal
+              </div>
+              <div class="term-tab" onclick="switchTermTab(this)">Output</div>
+              <div class="term-tab" onclick="switchTermTab(this)">
+                Debug Console
+              </div>
+              <div class="terminal-actions">
+                <button
+                  class="term-act"
+                  title="New Terminal"
+                  onclick="newTerminalLine()"
+                >
+                  ＋
+                </button>
+                <button
+                  class="term-act"
+                  title="Kill Terminal"
+                  onclick="clearTerminal()"
+                >
+                  🗑
+                </button>
+                <button
+                  class="term-act"
+                  title="Close Panel"
+                  onclick="toggleTerminal()"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <!-- id="terminalBody" مطلوب من addTerminalLine() و clearTerminal() -->
+            <div class="terminal-body" id="terminalBody">
+              <div>
+                <span class="t-info">[info]</span> Compiling project
+                'Compiler'...
+              </div>
+              <div>
+                <span class="t-info">[info]</span>
+                <span class="t-success">Successfully compiled in 1.2s</span>
+              </div>
+              <div>
+                <span class="t-arrow">→</span> Server running on localhost:8000
+              </div>
+              <div><span class="t-cursor"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <aside class="right-panel">
+        <!-- Language Settings -->
+        <div class="panel-section">
+          <div class="panel-section-title">Language Settings</div>
+          <div
+            class="setting-row"
+            style="flex-direction: column; align-items: flex-start; gap: 6px"
+          >
+            <div class="setting-label">Interpreter</div>
+            <div class="select-wrap" style="width: 100%">
+              <!-- interpreterChanged() مطلوبة -->
+              <select
+                class="setting-select"
+                style="width: 100%"
+                onchange="interpreterChanged(this)"
+              >
+                <option>Python 3.11.2 64-bit</option>
+                <option>Python 3.10.0 64-bit</option>
+                <option>Node.js 18 LTS</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+          <div class="setting-row" style="margin-top: 10px">
+            <div class="setting-label">Auto-linting</div>
+            <label class="toggle">
+              <!-- lintingToggled() مطلوبة -->
+              <input type="checkbox" checked onchange="lintingToggled(this)" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Collaboration -->
+        <div class="panel-section">
+          <div class="panel-section-title">Collaboration</div>
+
+          <div class="collab-user">
+            <div class="collab-avatar-placeholder online">AM</div>
+            <div class="collab-info">
+              <div class="collab-name">Alex Miller</div>
+              <!-- class="collab-status editing" مطلوب من الـ setInterval في القسم 14 -->
+              <div class="collab-status editing">Editing main.py</div>
+            </div>
+            <!-- messageUser() مطلوبة -->
+            <button
+              class="collab-msg-btn"
+              title="Message"
+              onclick="messageUser('Alex Miller')"
+            >
+              💬
+            </button>
+          </div>
+
+          <div class="collab-user">
+            <div class="collab-avatar-placeholder offline">SK</div>
+            <div class="collab-info">
+              <div class="collab-name">Sarah Kim</div>
+              <div class="collab-status">Offline</div>
+            </div>
+            <button
+              class="collab-msg-btn"
+              title="Message"
+              onclick="messageUser('Sarah Kim')"
+            >
+              💬
+            </button>
+          </div>
+
+          <!-- inviteTeam() مطلوبة -->
+          <button class="invite-btn" onclick="inviteTeam()">
+            ＋ Invite Team
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="statusbar">
+      <!-- id="sbBranch" مطلوب من saveFile() -->
+      <div class="sb-item" id="sbBranch">⑂ main*</div>
+      <div class="sb-sep"></div>
+      <div class="sb-item">↓0 ↑2</div>
+      <div class="sb-sep"></div>
+      <!-- id="sbErrors" و id="sbWarns" و id="sbHints" -->
+      <div class="sb-item sb-err" id="sbErrors">⊗ 0</div>
+      <div class="sb-item sb-warn" id="sbWarns">⚠ 0</div>
+      <div class="sb-item" id="sbHints">△ 2</div>
+      <div class="sb-right">
+        <!-- id="sbCursor" مطلوب من updateCursor() -->
+        <div class="sb-item" id="sbCursor">Ln 1, Col 1</div>
+        <div class="sb-item">Spaces: 4</div>
+        <div class="sb-item">UTF-8</div>
+        <div class="sb-item">DevFlow v1.0.4</div>
+      </div>
+    </div>
+
+    <!-- ربط ملف الـ JS -->
+    <script src="js/index.js"></script>
+  </body>
+</html>

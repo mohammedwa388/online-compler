@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevFlow IDE - Code, Compile, Conquer</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <link rel="stylesheet" href="css/general.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="nav-header">
+        <ul class="list-link">
+          <li><span class="logo-text">DevFlow IDE</span></li>
+          <li>
+            <a href="ideBoard.html" class="link link--active">Dashboard</a>
+          </li>
+          <li><a href="projects.html" class="link">Projects</a></li>
+
+          <li><a href="#" class="link">Docs</a></li>
+        </ul>
+      </nav>
+      <div class="box-icon">
+        <button class="material-symbols-outlined nav-icon">
+          notifications
+        </button>
+        <button class="material-symbols-outlined nav-icon">settings</button>
+        <button class="button-action">Deploy</button>
+        <img class="img-header" src="/header/unnamed.png" alt="User avatar" />
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="section-hero">
+        <div class="container grid grid--2-cols align-center">
+          <div class="box-hero-text">
+            <h1 class="heading-primary">
+              Code, Compile,
+              <span class="accent-color">Conquer.</span>
+            </h1>
+            <p class="hero-description">
+              The ultimate web-based IDE designed for peak performance.
+              Experience lightning-fast execution, multi-language support, and
+              seamless cloud synchronization.
+            </p>
+            <div class="cta-group">
+              <button class="btn btn--fill">Try it Now &#11106;</button>
+              <button class="btn btn--outline">View Documentation</button>
+            </div>
+            <div class="hero-badges">
+              <div class="badge">
+                <span class="material-symbols-outlined accent-color">bolt</span>
+                <span>SUB-MS LATENCY</span>
+              </div>
+              <div class="badge">
+                <span class="material-symbols-outlined accent-color"
+                  >cloud</span
+                >
+                <span>AUTO-SYNC</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Representation of Editor -->
+          <div class="box-hero-img">
+            <div class="terminal-container">
+              <!-- الـ Glow اللي ورا الـ Terminal -->
+              <div class="terminal-glow"></div>
+
+              <div class="terminal-window">
+                <div class="terminal-header">
+                  <div class="terminal-dots">
+                    <span class="dot dot--red"></span>
+                    <span class="dot dot--yellow"></span>
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div class="terminal-tab">
+                    <span class="material-symbols-outlined">code</span>
+                    <span>main.rs — Compiler Project</span>
+                  </div>
+                </div>
+
+                <div class="terminal-body-wrapper">
+                  <div class="line-numbers">
+                    <span>1</span><span>2</span><span>3</span><span>4</span
+                    ><span>5</span><span>6</span><span>7</span><span>8</span
+                    ><span>9</span>
+                  </div>
+                  <div class="code-content">
+                    <p>
+                      <span class="c-kw">fn</span>
+                      <span class="c-fn">main</span>() {
+                    </p>
+                    <p class="ind-1">
+                      <span class="c-kw">let</span> greeting =
+                      <span class="c-str">"Hello, DevFlow!"</span>;
+                    </p>
+                    <p class="ind-1 c-comm">// Lightning fast execution</p>
+                    <p class="ind-1">
+                      <span class="c-fn">println!</span>(<span class="c-str"
+                        >"{}"</span
+                      >, greeting);
+                    </p>
+                    <p class="ind-1 highlight">
+                      <span class="c-kw">match</span>
+                      compile_status {
+                    </p>
+                    <p class="ind-2">
+                      Status::Success =>
+                      <span class="c-kw">deploy</span>(),
+                    </p>
+                    <p class="ind-2">
+                      _ =>
+                      <span class="c-kw">panic!</span>(<span class="c-err"
+                        >"Failed"</span
+                      >),
+                    </p>
+                    <p class="ind-1">}</p>
+                    <p>}</p>
+                  </div>
+                </div>
+                <div class="terminal-footer">
+                  <div class="footer-left">
+                    <div>
+                      <span class="status-ready"
+                        ><span
+                          class="material-symbols-outlined"
+                          data-icon="check_circle"
+                          >check_circle</span
+                        >
+                        Ready</span
+                      >
+                    </div>
+                    <span class="text-slate-500">UTF-8</span>
+                  </div>
+                  <div class="footer-right">Rust 1.75.0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section-features -->
+      <section class="section-features">
+        <div class="container">
+          <div class="center-text margin-bottom-lg">
+            <h2 class="heading-secondary">Built for the Modern Architect</h2>
+            <p class="section-subtext">
+              Engineered with precision to ensure your focus remains entirely on
+              the logic, not the tooling.
+            </p>
+          </div>
+
+          <div class="grid-custom--1 grid--bento">
+            <div class="feature-card feature-card--large">
+              <div class="feature-img"></div>
+              <div class="feature-content">
+                <span class="material-symbols-outlined feature-icon">bolt</span>
+                <h3 class="subheading">Lightning-Fast Compilation</h3>
+                <p class="feature-describstion">
+                  Our edge-compute infrastructure delivers sub-millisecond cold
+                  starts and compilation times that rival local machines.
+                </p>
+              </div>
+
+              <!-- <img
+                  alt="Tech schematic"
+                  class="object-cover img-feature"
+                  data-alt="abstract technical schematic of high-speed fiber optics and digital circuits, glowing indigo and cyan colors"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdJVXPnaQExP5uIZLBWUqdnGxl15SdxaKhDlINmDN9u3sCXb9Y0_ZhEVCPbcsVw0FTifkXi1QlfFoVhpqinWnI-IP4UETZdvTgZELS1TWdJP8ngaPhyF58B50WOiNdpeOpGH2FFRmGVBx4_Bk-r_j31Ro-9KLYrj18EehvlW6bkAw3Ghf3HUgA5WxGcL3jWn0MXqs8Zv3a1FM5qzmDfxHt3CRhE-vUILUEZZplOyrtsZghl69qtglZRsGmNKugfNWua7PzXIxbOTs"
+                /> -->
+            </div>
+
+            <div class="feature-card">
+              <span class="material-symbols-outlined feature-icon"
+                >language</span
+              >
+              <h3 class="subheading">50+ Languages</h3>
+              <p class="feature-describstion">
+                From legacy C to modern Go and Rust, DevFlow supports the entire
+                spectrum.
+              </p>
+              <div class="lang-tags">
+                <span>PYTHON</span><span>JS</span><span>GO</span>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <span class="material-symbols-outlined feature-icon">sync</span>
+              <h3 class="subheading">Cloud Persistence</h3>
+              <p class="feature-describstion">
+                Your workspace follows you. Sessions are instantly persisted
+                across devices.
+              </p>
+            </div>
+
+            <div class="feature-card feature-card--wide">
+              <div class="feature-content">
+                <span class="material-symbols-outlined feature-icon"
+                  >groups</span
+                >
+                <h3 class="subheading">Real-time Pair Programming</h3>
+                <p class="feature-describstion">
+                  Invite collaborators with a single link. Debug together with
+                  low-latency cursor tracking.
+                </p>
+              </div>
+              <div class="feature-avatars">
+                <img src="/feature/feature-1.png" alt="Avatar 1" />
+                <img
+                  src="/feature/feature-2.png"
+                  alt="Avatar 2"
+                  class="av-offset"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section-logos -->
+      <section class="section-logos">
+        <div class="box-logos container center-text">
+          <h4 class="heading-logo-cloud">
+            NATIVE PERFORMANCE FOR MODERN STACKS
+          </h4>
+          <div class="logo-grid">
+            <div class="logo-item">
+              <img class="logo-img" src="/Logo/logo-1.png" alt="Python" /><span
+                >PYTHON</span
+              >
+            </div>
+            <div class="logo-item">
+              <img class="logo-img" src="/Logo/logo-2.png" alt="JS" /><span
+                >JS</span
+              >
+            </div>
+            <div class="logo-item">
+              <img class="logo-img" src="/Logo/logo-3.png" alt="C++" /><span
+                >C++</span
+              >
+            </div>
+            <div class="logo-item">
+              <img class="logo-img" src="/Logo/logo-4.png" alt="Go" /><span
+                >GO</span
+              >
+            </div>
+            <div class="logo-item">
+              <img class="logo-img" src="/Logo/logo-5.png" alt="Rust" /><span
+                >RUST</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section-testimonial -->
+      <section class="section-testimonial container center-text">
+        <div class="box-testimonial">
+          <span class="material-symbols-outlined quote-icon">format_quote</span>
+          <blockquote class="testimonial-text">
+            "DevFlow has completely replaced my local dev environment for rapid
+            prototyping. The speed of the compiler is frankly terrifying. It
+            feels like the code finishes executing before I've even released the
+            keystrokes."
+          </blockquote>
+          <div class="author-box">
+            <img src="/testimonial/testimonial-1.png" alt="Alex Rivera" />
+            <div class="author-info">
+              <p class="author-name">Alex Rivera</p>
+              <p class="author-title">Principal Engineer, Quantum Systems</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION-CTA  -->
+      <section class="section-cta">
+        <div class="cta-card center-text">
+          <h2 class="heading-secondary">Ready to enter flow state?</h2>
+          <p class="cta-descrabtion">
+            Join 100k+ developers who have optimized their workflow with the
+            world's most precise online compiler.
+          </p>
+          <button class="btn btn--cta">Start Coding for Free</button>
+          <p class="cta-microcopy">NO CREDIT CARD REQUIRED • INSTANT SETUP</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="box-footer">
+        <div class="footer-brand">
+          <span class="footer-logo">DevFlow IDE</span>
+          <p>© 2024 DevFlow Systems. Engineered for speed.</p>
+        </div>
+        <nav class="footer-nav">
+          <li><a class="btn-fotter" href="#">Privacy</a></li>
+          <li><a class="btn-fotter" href="#">Terms</a></li>
+          <li><a class="btn-fotter" href="#">Status</a></li>
+          <li><a class="btn-fotter" href="#" class="accent-color">API</a></li>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
