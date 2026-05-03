@@ -1,0 +1,170 @@
+:root {
+  --color-primary: #c0c1ff;
+  --color-on-primary: #1000a9;
+  --color-surface-low: #0d1c2d;
+  --color-outline: #464554;
+  --color-text-variant: #c7c4d7;
+}
+/*************************
+--- 01 TYPOGRAPHY SYSTEM
+
+-- FONT SIZE SYSTEM (px) 
+- smaller font : 10 / 12 / 14 
+- noemal font : 16 / 18 / 20 / 24 / 30 / 32 
+36 / 44  
+- big font : 52 / 62 / 74 / 86 / 98
+
+-- Font Weights:
+- Default: 400
+
+
+-- Line heights:
+- Default: 1
+
+================================================
+--- 02 COLORS
+
+- Primary : 
+- Tints : 
+- Shades : 
+- Accents :
+- Greys
+
+
+================================================
+--- 05 SHADOWS
+
+
+================================================
+--- 06 BORDER_Radius
+
+================================================
+--- 07 WHITESPACE
+- SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+************************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  background-color: #051424;
+  color: #d4e4fa;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/********************
+--- 02 GRID & LAYOUT
+**********************/
+.container {
+  max-width: 135rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.align-center {
+  align-items: center;
+}
+.center-text {
+  text-align: center;
+}
+
+/* Headings */
+.heading-primary {
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 3rem;
+}
+
+.heading-tertiary {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.accent-color {
+  color: #6366f1;
+}
+
+/************************
+--- 03 COMPONENTS & UTILS
+**************************/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.btn--fill {
+  background-color: #c0c1ff;
+  color: #0d0096;
+}
+
+.btn--outline {
+  background-color: transparent;
+  border: 1px solid #464554;
+  color: #d4e4fa;
+}
+
+.margin-bottom-lg {
+  margin-bottom: 6.4rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+  vertical-align: middle;
+}

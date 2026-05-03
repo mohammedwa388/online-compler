@@ -1,0 +1,654 @@
+/* =============================================================
+   responsive.css — DevFlow IDE
+   يغطي التلات صفحات: index.html · login.html · ideBoard.html
+   Breakpoints:
+     ≤ 1200px  → tablet landscape
+     ≤ 900px   → tablet portrait
+     ≤ 600px   → mobile large
+     ≤ 400px   → mobile small
+   ============================================================= */
+
+/* ─────────────────────────────────────────────────────────────
+   HOW TO USE — أضف في كل صفحة قبل إغلاق <head>:
+   <link rel="stylesheet" href="css/responsive.css" />
+   ───────────────────────────────────────────────────────────── */
+
+
+/* =============================================================
+   ██████  index.html  ██████
+   ============================================================= */
+
+/* ── ≤ 1200px ── */
+@media (max-width: 1200px) {
+  .section-hero {
+    padding: 6.4rem 3.2rem;
+  }
+
+  .grid-custom--1 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature-card--large {
+    grid-column: span 2;
+  }
+
+  .feature-card--wide {
+    grid-column: span 2;
+  }
+
+  .logo-grid {
+    gap: 3.2rem;
+  }
+}
+
+/* ── ≤ 900px ── */
+@media (max-width: 900px) {
+  /* Header */
+  .main-header {
+    padding: 0 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .list-link {
+    gap: 0.8rem;
+  }
+
+  .logo-text {
+    font-size: 1.6rem;
+    margin-right: 1.6rem;
+  }
+
+  .link:link,
+  .link:visited {
+    font-size: 1.2rem;
+    padding: 1.4rem 0.6rem;
+  }
+
+  /* Hero */
+  .section-hero {
+    padding: 4.8rem 2.4rem;
+  }
+
+  .grid--2-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .box-hero-text {
+    text-align: center;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-group {
+    justify-content: center;
+  }
+
+  .hero-badges {
+    justify-content: center;
+  }
+
+  .box-hero-img {
+    max-width: 540px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Features */
+  .section-features {
+    padding: 6.4rem 0;
+  }
+
+  .grid-custom--1 {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card--large,
+  .feature-card--wide {
+    grid-column: span 1;
+  }
+
+  .feature-card--large {
+    height: auto;
+    padding-bottom: 3rem;
+  }
+
+  .feature-content {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+
+  .feature-img {
+    display: none;
+  }
+
+  .feature-avatars {
+    margin-left: 0;
+    margin-top: 2.4rem;
+  }
+
+  /* Logo cloud */
+  .logo-grid {
+    flex-wrap: wrap;
+    gap: 2.4rem;
+    justify-content: center;
+  }
+
+  /* Testimonial */
+  .testimonial-text {
+    width: 90%;
+    font-size: 1.6rem;
+  }
+
+  /* CTA */
+  .section-cta {
+    width: 90%;
+    padding: 6.4rem 0;
+  }
+
+  .cta-descrabtion {
+    width: 90%;
+  }
+
+  /* Footer */
+  .box-footer {
+    flex-direction: column;
+    gap: 2.4rem;
+    text-align: center;
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem;
+  }
+}
+
+/* ── ≤ 600px ── */
+@media (max-width: 600px) {
+  html {
+    font-size: 55%;
+  }
+
+  /* Header — collapse nav */
+  .main-header {
+    position: relative;
+  }
+
+  .list-link {
+    flex-wrap: wrap;
+  }
+
+  .box-icon {
+    gap: 0.8rem;
+  }
+
+  .button-action {
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
+  }
+
+  /* Hero */
+  .section-hero {
+    padding: 3.2rem 1.6rem;
+  }
+
+  .heading-primary {
+    font-size: 2.8rem;
+  }
+
+  .heading-secondary {
+    font-size: 2.4rem;
+  }
+
+  .cta-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  /* Terminal card */
+  .terminal-window {
+    font-size: 1.1rem;
+  }
+
+  .code-content {
+    font-size: 1.1rem;
+  }
+
+  /* Features */
+  .feature-card {
+    padding: 2rem;
+  }
+
+  .subheading {
+    font-size: 1.8rem;
+  }
+
+  /* Logos */
+  .logo-grid {
+    gap: 1.6rem;
+  }
+
+  .logo-item img {
+    height: 3.2rem;
+    width: 3.2rem;
+  }
+
+  /* CTA */
+  .cta-card {
+    padding: 3.2rem 2rem;
+    border-radius: 1.6rem;
+  }
+
+  .btn--cta {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.6rem;
+    width: 100%;
+  }
+}
+
+/* ── ≤ 400px ── */
+@media (max-width: 400px) {
+  html {
+    font-size: 50%;
+  }
+
+  .list-link {
+    gap: 0.4rem;
+  }
+
+  .link:link,
+  .link:visited {
+    font-size: 1.1rem;
+    padding: 1.2rem 0.4rem;
+  }
+
+  .section-cta {
+    width: 98%;
+  }
+}
+
+
+/* =============================================================
+   ██████  login.html  ██████
+   ============================================================= */
+
+/* ── ≤ 600px ── */
+@media (max-width: 600px) {
+  /* login.html uses its own inline styles so we target its classes */
+
+  /* Wrapper */
+  .login-wrapper {
+    padding: 12px;
+    max-width: 100%;
+  }
+
+  /* Card */
+  .card {
+    padding: 28px 20px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Brand */
+  .brand-name {
+    font-size: 18px !important;
+  }
+
+  .brand-icon {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 17px !important;
+  }
+
+  /* OAuth buttons — stack vertically */
+  .oauth-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Form inputs */
+  .form-input {
+    font-size: 14px !important;
+  }
+
+  /* Submit button */
+  .btn-submit {
+    padding: 13px !important;
+    font-size: 14px !important;
+  }
+
+  /* Status strip — wrap */
+  .status-strip {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    font-size: 10px !important;
+    padding: 8px 12px !important;
+  }
+
+  .status-right {
+    margin-left: 0 !important;
+  }
+
+  /* Shrink background glows on mobile so they don't kill performance */
+  .bg-glow--1 {
+    width: 300px !important;
+    height: 300px !important;
+  }
+  .bg-glow--2 {
+    width: 250px !important;
+    height: 250px !important;
+  }
+}
+
+/* ── ≤ 400px ── */
+@media (max-width: 400px) {
+  .card {
+    padding: 20px 14px !important;
+  }
+
+  .brand-name {
+    font-size: 15px !important;
+  }
+
+  .card-title {
+    font-size: 16px !important;
+  }
+
+  .form-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+}
+
+
+/* =============================================================
+   ██████  ideBoard.html  ██████
+   ============================================================= */
+
+/* ── ≤ 1200px — Narrow right panel ── */
+@media (max-width: 1200px) {
+  :root {
+    --panel-w: 200px;
+    --sidebar-w: 200px;
+  }
+
+  .right-panel {
+    width: 200px;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+}
+
+/* ── ≤ 900px — Hide right panel, shrink sidebar ── */
+@media (max-width: 900px) {
+  :root {
+    --sidebar-w: 180px;
+    --panel-w: 0px;
+    --topbar-h: 48px;
+  }
+
+  /* Hide right panel */
+  .right-panel {
+    display: none;
+  }
+
+  /* Topbar */
+  .topbar {
+    padding: 0 10px;
+    gap: 4px;
+  }
+
+  .logo {
+    font-size: 14px;
+    margin-right: 12px;
+  }
+
+  .nav a {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .topbar-icons {
+    gap: 4px;
+    margin-left: 6px;
+  }
+
+  .icon-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 180px;
+  }
+
+  .tree-item {
+    font-size: 12px;
+    padding: 4px 8px 4px 10px;
+  }
+
+  /* Terminal */
+  :root {
+    --terminal-h: 150px;
+  }
+
+  .terminal-panel {
+    height: 150px;
+  }
+}
+
+/* ── ≤ 700px — Hide sidebar by default, collapse nav ── */
+@media (max-width: 700px) {
+  /* Hide sidebar — JS toggleSidebar() still works */
+  .sidebar {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 46px;
+    height: calc(100vh - var(--topbar-h) - var(--statusbar-h));
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    width: 220px !important;
+  }
+
+  /* When sidebar is open — add .open class via JS or keep existing toggle */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Activity bar stays visible */
+  .activity-bar {
+    z-index: 101;
+  }
+
+  /* Nav — hide "Projects" and "Docs" to save space */
+  .nav a:not(.active) {
+    display: none;
+  }
+
+  /* Topbar compact */
+  .topbar {
+    height: 44px;
+  }
+
+  /* Code view font slightly smaller */
+  .code-view {
+    font-size: 12px;
+  }
+
+  .ln {
+    width: 36px;
+    font-size: 11px;
+  }
+
+  /* Terminal smaller */
+  :root {
+    --terminal-h: 130px;
+  }
+
+  .terminal-panel {
+    height: 130px;
+  }
+
+  .terminal-body {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+
+  /* Status bar compact */
+  .statusbar {
+    font-size: 10px;
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  /* Hide some status items */
+  .sb-sep {
+    display: none;
+  }
+}
+
+/* ── ≤ 480px — Full mobile layout ── */
+@media (max-width: 480px) {
+  /* Hide activity bar labels */
+  .act-btn {
+    font-size: 15px;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Topbar — minimal */
+  .logo {
+    font-size: 12px;
+    margin-right: 6px;
+  }
+
+  /* Show only Run button */
+  .btn-save {
+    display: none;
+  }
+
+  .btn-run {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  /* Hide some topbar icons */
+  .topbar-icons .icon-btn:first-child {
+    display: none;
+  }
+
+  /* Tabs */
+  .tab {
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .tab-icon {
+    font-size: 12px;
+  }
+
+  /* Code */
+  .code-view {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  /* Status bar — keep minimal */
+  .sb-right .sb-item:not(#sbCursor) {
+    display: none;
+  }
+
+  /* Terminal tabs */
+  .term-tab {
+    font-size: 10px;
+    padding: 0 8px;
+  }
+}
+
+/* ── ≤ 360px — Ultra small ── */
+@media (max-width: 360px) {
+  :root {
+    --topbar-h: 40px;
+  }
+
+  .topbar {
+    height: 40px;
+    padding: 0 6px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .nav {
+    flex: unset;
+  }
+
+  .code-view {
+    font-size: 10px;
+  }
+}
+
+
+/* =============================================================
+   SHARED — Sidebar overlay backdrop (ideBoard mobile)
+   ============================================================= */
+
+/* Semi-transparent backdrop when sidebar is open on mobile */
+@media (max-width: 700px) {
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+
+  .sidebar-backdrop.visible {
+    display: block;
+  }
+}
+
+
+/* =============================================================
+   UTILITY — Scrollbar thin on mobile
+   ============================================================= */
+@media (max-width: 900px) {
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+}
