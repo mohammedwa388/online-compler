@@ -5,8 +5,7 @@ dotenv.config({ path: './config.env' });
 
 const app = require('./app');
 
-const uri =
-  'mongodb://waly:MMOHammedd@ac-qbmocij-shard-00-00.sfevpak.mongodb.net:27017,ac-qbmocij-shard-00-01.sfevpak.mongodb.net:27017,ac-qbmocij-shard-00-02.sfevpak.mongodb.net:27017/?ssl=true&replicaSet=atlas-13nhpc-shard-0&authSource=admin&appName=Cluster0';
+const uri = process.env.MONGODB_URI;
 
 mongoose
   .connect(uri)
