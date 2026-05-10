@@ -1,0 +1,43 @@
+/* ════════════════════════════════════════════════════════════════
+   editor-patch.css
+   حط ده في آخر ideBoard.css أو في <style> في ideBoard.html
+   ════════════════════════════════════════════════════════════════ */
+
+/* الـ code-view لازم يكون flex وعنده ارتفاع */
+.code-view {
+  flex: 1;
+  overflow: hidden;
+  background: #0d1117;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;         /* مهم عشان flex child يتمدد صح */
+  cursor: text;
+}
+
+.editor-inner {
+  flex: 1;
+  overflow: auto !important;
+  display: flex;
+}
+
+/* الـ textarea نفسها — اكيد تأخد كل المساحة */
+#codeTextarea {
+  flex: 1;
+  min-height: 100%;
+  resize: none !important;
+}
+
+/* scrollbar مظبوطة للـ editor */
+.editor-inner::-webkit-scrollbar       { width: 8px; height: 8px; }
+.editor-inner::-webkit-scrollbar-track { background: #0d1117; }
+.editor-inner::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+.editor-inner::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* عشان الـ editor-content يملى المساحة كلها بين الـ tabs والـ terminal */
+.editor-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}

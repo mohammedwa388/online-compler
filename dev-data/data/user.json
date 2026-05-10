@@ -1,0 +1,43 @@
+[
+  {
+    "id": 4,
+    "username": "devflow_user",
+    "email": "user@devflow.io",
+    "displayName": "Ahmed Mostafa",
+    "initials": "AM",
+    "avatarUrl": "/header/unnamed.png",
+    "role": "owner",
+    "plan": "pro",
+    "createdAt": "2023-09-15T10:30:00Z",
+    "lastLoginAt": "2024-06-01T08:22:00Z",
+    "preferences": {
+      "theme": "dark",
+      "fontSize": 14,
+      "tabSize": 4,
+      "wordWrap": false,
+      "autoSave": true,
+      "autoLinting": true,
+      "defaultInterpreter": "Python 3.11.2 64-bit",
+      "terminalFontSize": 13
+    },
+    "stats": { "projectsCount": 12, "totalCommits": 348, "linesWritten": 28400 }
+  },
+  {
+    "id": 6,
+    "username": "devflow_user",
+    "email": "user@devflow.io",
+    "displayName": "Ahmed Mostafa"
+  },
+  {
+    "id": 6,
+    "username": "devflow_user",
+    "email": "user@devflow.io",
+    "displayName": "Ahmed Mostafa"
+  },
+  {
+    "id": 10,
+    "username": "devflow_user",
+    "email": "user@devflow.io",
+    "displayName": "Ahmed Mostafa"
+  }
+]
