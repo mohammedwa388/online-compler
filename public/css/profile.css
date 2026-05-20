@@ -73,6 +73,22 @@ nav {
   color: var(--text);
   background: var(--surface2);
 }
+.nav-links a.active {
+  color: var(--accent);
+  background: var(--surface2);
+  position: relative;
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px 2px 0 0;
+}
 .nav-right {
   display: flex;
   align-items: center;

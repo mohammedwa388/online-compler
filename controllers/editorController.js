@@ -1,21 +1,29 @@
 const { exec } = require('child_process');
-const fs        = require('fs');
-const path      = require('path');
-const os        = require('os');
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
 
 const LANGUAGES = {
-  javascript: { ext: '.js',  runCmd: (f) => `node "${f}"` },
-  python:     { ext: '.py',  runCmd: (f) => `python3 "${f}"` },
-  typescript: { ext: '.ts',  runCmd: (f) => `npx ts-node "${f}"` },
-  ruby:       { ext: '.rb',  runCmd: (f) => `ruby "${f}"` },
+  javascript: { ext: '.js', runCmd: (f) => `node "${f}"` },
+  python: { ext: '.py', runCmd: (f) => `python3 "${f}"` },
+  typescript: { ext: '.ts', runCmd: (f) => `npx ts-node "${f}"` },
+  java: {
+    ext: '.java',
+    runCmd: (f) => {
+      const dir = require('path').dirname(f);
+      const newPath = require('path').join(dir, 'Main.java');
+      return `copy "${f}" "${newPath}" && javac "${newPath}" -d "${dir}" && java -cp "${dir}" Main`;
+    },
+  },
 };
 
-// POST /api/v1/editor/run
 exports.runCode = (req, res) => {
   const { code, language } = req.body;
 
   if (!code || !language)
-    return res.status(400).json({ status: 'fail', message: 'ابعت الكود واللغة' });
+    return res
+      .status(400)
+      .json({ status: 'fail', message: 'ابعت الكود واللغة' });
 
   const lang = LANGUAGES[language.toLowerCase()];
   if (!lang)
@@ -28,20 +36,25 @@ exports.runCode = (req, res) => {
 
   fs.writeFile(tmpFile, code, (writeErr) => {
     if (writeErr)
-      return res.status(500).json({ status: 'error', message: 'فشل في كتابة الملف المؤقت' });
+      return res
+        .status(500)
+        .json({ status: 'error', message: 'فشل في كتابة الملف المؤقت' });
 
     exec(lang.runCmd(tmpFile), { timeout: 10000 }, (err, stdout, stderr) => {
       fs.unlink(tmpFile, () => {});
 
       if (err)
-        return res.status(200).json({ status: 'error', output: stderr || err.message });
+        return res
+          .status(200)
+          .json({ status: 'error', output: stderr || err.message });
 
-      res.status(200).json({ status: 'success', output: stdout || '(لا يوجد output)' });
+      res
+        .status(200)
+        .json({ status: 'success', output: stdout || '(لا يوجد output)' });
     });
   });
 };
 
-// GET /api/v1/editor/languages
 exports.getLanguages = (req, res) => {
   res.status(200).json({
     status: 'success',
@@ -49,7 +62,7 @@ exports.getLanguages = (req, res) => {
       languages: Object.keys(LANGUAGES).map((id) => ({
         id,
         label: id.charAt(0).toUpperCase() + id.slice(1),
-        ext:   LANGUAGES[id].ext,
+        ext: LANGUAGES[id].ext,
       })),
     },
   });

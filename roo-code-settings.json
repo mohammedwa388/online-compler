@@ -1,0 +1,13 @@
+{
+  "providerProfiles": {
+    "currentApiConfigName": "AgentRouter",
+    "apiConfigs": {
+      "AgentRouter": {
+        "apiProvider": "openai-native",
+        "openAiBaseUrl": "https://agentrouter.org/v1",
+        "openAiApiKey": "sk-W3sq9PXRBuQAhWQ5WwSHfdH2Bj0hfkEMAqv3GbaCuMsETFlg",
+        "openAiModelId": "claude-haiku-4-5-20251001"
+      }
+    }
+  }
+}

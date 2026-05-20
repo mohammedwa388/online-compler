@@ -1,11 +1,5 @@
-// ════════════════════════════════════════════════════════════════════
-//  js/api.js
-//  ملف واحد فيه كل التعامل مع الـ backend
-//  أي ملف تاني محتاج يكلم السيرفر → بيستخدم الـ functions هنا
-// ════════════════════════════════════════════════════════════════════
+const API_BASE = 'http://localhost:3000';
 
-// ── Helper: بناء الـ headers ─────────────────────────────────────────
-// بيجيب الـ JWT token من localStorage ويحطه في كل request تلقائيًا
 function getAuthHeaders() {
   const token = localStorage.getItem('token');
   return {
@@ -14,20 +8,29 @@ function getAuthHeaders() {
   };
 }
 
-// ── Helper: Fetch wrapper ─────────────────────────────────────────────
-// بدل ما نكرر try/catch في كل مكان، هنستخدم الـ function دي
 async function apiFetch(url, options = {}) {
-  const res  = await fetch(url, { headers: getAuthHeaders(), ...options });
-  const data = await res.json();
+  const res = await fetch(API_BASE + url, {
+    headers: getAuthHeaders(),
+    ...options,
+  });
+
+  const text = await res.text();
+  if (!text) {
+    if (!res.ok) throw new Error('Server error: empty response');
+    return {};
+  }
+
+  let data;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    throw new Error(`Server returned non-JSON: ${text.slice(0, 100)}`);
+  }
+
   if (!res.ok) throw new Error(data.message || 'Server error');
   return data;
 }
 
-// ════════════════════════════════════════════════════════════════════
-//  AUTH
-// ════════════════════════════════════════════════════════════════════
-
-// تسجيل دخول — بيرجع { token, data: { user } }
 async function apiLogin(email, password) {
   return apiFetch('/api/v1/auth/login', {
     method: 'POST',
@@ -35,7 +38,6 @@ async function apiLogin(email, password) {
   });
 }
 
-// تسجيل حساب جديد
 async function apiRegister(name, email, password) {
   return apiFetch('/api/v1/auth/register', {
     method: 'POST',
@@ -55,7 +57,6 @@ async function apiRunCode(code, language) {
   });
 }
 
-// جيب اللغات المدعومة من السيرفر
 async function apiGetLanguages() {
   return apiFetch('/api/v1/editor/languages');
 }

@@ -150,10 +150,22 @@ video {
   color: #0d0096;
 }
 
+.btn--fill:hover {
+  background-color: #a5a6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(192, 193, 255, 0.25);
+}
+
 .btn--outline {
   background-color: transparent;
   border: 1px solid #464554;
   color: #d4e4fa;
+}
+
+.btn--outline:hover {
+  border-color: #6366f1;
+  color: #c0c1ff;
+  background-color: rgba(99, 102, 241, 0.08);
 }
 
 .margin-bottom-lg {
@@ -162,9 +174,9 @@ video {
 
 .material-symbols-outlined {
   font-variation-settings:
-    "FILL" 0,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 24;
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
   vertical-align: middle;
 }

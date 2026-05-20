@@ -6,91 +6,11 @@
     <title>DevFlow IDE — Create Account</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <style>
-      :root {
-        --bg-base:#0d0f14;--bg-card:#13161e;--bg-input:#1a1e28;
-        --border:#252a38;--border-focus:#3b82f6;
-        --accent:#3b82f6;--accent-glow:rgba(59,130,246,0.35);
-        --accent-2:#06b6d4;--text-primary:#e2e8f0;
-        --text-muted:#64748b;--success:#22c55e;--error:#ef4444;--warning:#f59e0b;
-        --mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif;
-      }
-      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-      body{font-family:var(--sans);background:var(--bg-base);color:var(--text-primary);min-height:100vh;display:flex;align-items:center;justify-content:center;overflow-x:hidden;position:relative;}
-      body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
-      .bg-glow{position:fixed;border-radius:50%;filter:blur(100px);opacity:.4;pointer-events:none;z-index:0;animation:pulse-glow 6s ease-in-out infinite alternate;}
-      .bg-glow--1{width:600px;height:600px;background:radial-gradient(circle,#1d4ed8 0%,transparent 70%);top:-200px;left:-150px;}
-      .bg-glow--2{width:500px;height:500px;background:radial-gradient(circle,#0e7490 0%,transparent 70%);bottom:-180px;right:-120px;animation-delay:3s;}
-      @keyframes pulse-glow{from{opacity:.3;transform:scale(1)}to{opacity:.55;transform:scale(1.08)}}
-      .particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-      .particle{position:absolute;font-family:var(--mono);font-size:11px;color:var(--accent);opacity:0;animation:float-up linear infinite;user-select:none;}
-      @keyframes float-up{0%{opacity:0;transform:translateY(0) rotate(0deg)}10%{opacity:.18}90%{opacity:.12}100%{opacity:0;transform:translateY(-100vh) rotate(20deg)}}
-      .register-wrapper{position:relative;z-index:1;width:100%;max-width:480px;padding:20px;animation:slide-in .6s cubic-bezier(.22,.68,0,1.2) both;}
-      @keyframes slide-in{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-      .brand{text-align:center;margin-bottom:28px;}
-      .brand-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;}
-      .brand-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 0 20px var(--accent-glow);}
-      .brand-name{font-family:var(--mono);font-size:22px;font-weight:700;letter-spacing:-.5px;}
-      .brand-name span{color:var(--accent);}
-      .brand-tagline{font-size:13px;color:var(--text-muted);font-family:var(--mono);letter-spacing:.5px;}
-      .card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:0 0 0 1px rgba(59,130,246,.06),0 32px 64px rgba(0,0,0,.5);position:relative;overflow:hidden;}
-      .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent-2),transparent);opacity:.8;}
-      .card-title{font-size:20px;font-weight:600;margin-bottom:4px;}
-      .card-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
-      .term-crumb{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:6px;}
-      .term-crumb .path{color:var(--accent-2);}
-      .term-crumb .cursor{display:inline-block;width:7px;height:13px;background:var(--accent);animation:blink .8s step-end infinite;}
-      @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-      .oauth-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
-      .btn-oauth{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--bg-input);color:var(--text-primary);font-size:13px;font-family:var(--sans);cursor:pointer;text-decoration:none;transition:border-color .2s,background .2s;}
-      .btn-oauth:hover{border-color:var(--border-focus);background:#1f2433;}
-      .btn-oauth svg{width:16px;height:16px;}
-      .divider{text-align:center;font-size:11px;color:var(--text-muted);font-family:var(--mono);letter-spacing:.5px;margin:20px 0;position:relative;}
-      .divider::before,.divider::after{content:'';position:absolute;top:50%;width:calc(50% - 90px);height:1px;background:var(--border);}
-      .divider::before{left:0}.divider::after{right:0}
-      .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-      .form-group{margin-bottom:16px;}
-      .form-label{display:block;font-size:12px;font-weight:500;color:#94a3b8;margin-bottom:6px;font-family:var(--mono);letter-spacing:.3px;}
-      .input-wrap{position:relative;}
-      .input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none;}
-      .form-input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:8px;padding:11px 12px 11px 38px;color:var(--text-primary);font-size:14px;font-family:var(--mono);outline:none;transition:border-color .2s,box-shadow .2s;}
-      .form-input:focus{border-color:var(--border-focus);box-shadow:0 0 0 3px var(--accent-glow);}
-      .form-input.invalid{border-color:var(--error);}
-      .form-input.valid{border-color:var(--success);}
-      .field-hint{font-size:11px;color:var(--text-muted);margin-top:4px;font-family:var(--mono);}
-      .field-hint.error{color:var(--error);}
-      .strength-bar{display:flex;gap:4px;margin-top:6px;}
-      .strength-bar span{flex:1;height:3px;background:var(--border);border-radius:2px;transition:background .3s;}
-      .strength-bar[data-level="1"] span:nth-child(1){background:var(--error);}
-      .strength-bar[data-level="2"] span:nth-child(-n+2){background:var(--warning);}
-      .strength-bar[data-level="3"] span:nth-child(-n+3){background:var(--accent);}
-      .strength-bar[data-level="4"] span{background:var(--success);}
-      .btn-toggle-pw{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;padding:4px;color:var(--text-muted);transition:color .2s;}
-      .terms-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:20px;}
-      .terms-row input{margin-top:3px;cursor:pointer;accent-color:var(--accent);}
-      .terms-row label{font-size:13px;color:#94a3b8;line-height:1.5;cursor:pointer;}
-      .terms-row a{color:var(--accent);text-decoration:none;}
-      .error-msg{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--error);margin-bottom:16px;display:none;align-items:center;gap:8px;}
-      .error-msg.visible{display:flex;}
-      .success-msg{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--success);margin-bottom:16px;display:none;align-items:center;gap:8px;}
-      .success-msg.visible{display:flex;}
-      .btn-submit{width:100%;padding:13px;border:none;border-radius:8px;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-size:15px;font-weight:600;font-family:var(--sans);position:relative;overflow:hidden;transition:opacity .2s,transform .1s;}
-      .btn-submit:hover:not(:disabled){opacity:.92;transform:translateY(-1px);}
-      .btn-submit:disabled{opacity:.6;cursor:not-allowed;}
-      .btn-text{display:block;}
-      .btn-loading{display:none;align-items:center;justify-content:center;gap:8px;}
-      .btn-submit.loading .btn-text{display:none;}
-      .btn-submit.loading .btn-loading{display:flex;}
-      .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
-      @keyframes spin{to{transform:rotate(360deg)}}
-      .card-footer{text-align:center;margin-top:20px;font-size:13px;color:var(--text-muted);}
-      .card-footer a{color:var(--accent);text-decoration:none;}
-      .status-strip{margin-top:16px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text-muted);font-family:var(--mono);}
-      .status-dot{width:6px;height:6px;border-radius:50%;background:var(--success);box-shadow:0 0 6px var(--success);animation:pulse-dot 2s ease-in-out infinite;}
-      @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
-      .status-sep{color:var(--border);}.status-right{margin-left:auto;}
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/createAcount.css" />
   </head>
   <body>
     <div class="bg-glow bg-glow--1"></div>
@@ -113,23 +33,58 @@
         </div>
 
         <h1 class="card-title">Create your account</h1>
-        <p class="card-sub">Start coding in seconds. No credit card required.</p>
+        <p class="card-sub">
+          Start coding in seconds. No credit card required.
+        </p>
 
         <div class="oauth-buttons">
-          <a href="#" class="btn-oauth" onclick="oauthRegister(event,'GitHub')">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.57v-2c-3.34.72-4.04-1.6-4.04-1.6-.54-1.37-1.33-1.74-1.33-1.74-1.08-.75.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.2.68.82.56C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <a
+            href="#"
+            class="btn-oauth"
+            onclick="oauthRegister(event, 'GitHub')"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.57v-2c-3.34.72-4.04-1.6-4.04-1.6-.54-1.37-1.33-1.74-1.33-1.74-1.08-.75.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.2.68.82.56C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"
+              />
+            </svg>
             GitHub
           </a>
-          <a href="#" class="btn-oauth" onclick="oauthRegister(event,'Google')">
-            <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.7 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h6.56c-.28 1.5-1.13 2.77-2.4 3.62v3h3.87c2.27-2.1 3.57-5.18 3.57-8.65z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.07 7.93-2.91l-3.87-3c-1.07.72-2.44 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.3v3.1A11.99 11.99 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.28 14.29A7.23 7.23 0 0 1 4.9 12c0-.79.13-1.56.38-2.29V6.61H1.3A11.99 11.99 0 0 0 0 12c0 1.93.46 3.76 1.3 5.39l3.98-3.1z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.6 4.6 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A11.99 11.99 0 0 0 1.3 6.61l3.98 3.1C6.23 6.86 8.88 4.75 12 4.75z"/></svg>
+          <a
+            href="#"
+            class="btn-oauth"
+            onclick="oauthRegister(event, 'Google')"
+          >
+            <svg viewBox="0 0 24 24">
+              <path
+                fill="#4285F4"
+                d="M23.7 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h6.56c-.28 1.5-1.13 2.77-2.4 3.62v3h3.87c2.27-2.1 3.57-5.18 3.57-8.65z"
+              />
+              <path
+                fill="#34A853"
+                d="M12 24c3.24 0 5.95-1.07 7.93-2.91l-3.87-3c-1.07.72-2.44 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.3v3.1A11.99 11.99 0 0 0 12 24z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M5.28 14.29A7.23 7.23 0 0 1 4.9 12c0-.79.13-1.56.38-2.29V6.61H1.3A11.99 11.99 0 0 0 0 12c0 1.93.46 3.76 1.3 5.39l3.98-3.1z"
+              />
+              <path
+                fill="#EA4335"
+                d="M12 4.75c1.77 0 3.35.6 4.6 1.8l3.44-3.44C17.95 1.19 15.24 0 12 0A11.99 11.99 0 0 0 1.3 6.61l3.98 3.1C6.23 6.86 8.88 4.75 12 4.75z"
+              />
+            </svg>
             Google
           </a>
         </div>
 
         <div class="divider">OR REGISTER WITH EMAIL</div>
 
-        <div class="error-msg"   id="errorMsg"><span>⊗</span><span id="errorText"></span></div>
-        <div class="success-msg" id="successMsg"><span>✓</span><span id="successText"></span></div>
+        <div class="error-msg" id="errorMsg">
+          <span>⊗</span><span id="errorText"></span>
+        </div>
+        <div class="success-msg" id="successMsg">
+          <span>✓</span><span id="successText"></span>
+        </div>
 
         <form id="registerForm" novalidate onsubmit="handleRegister(event)">
           <div class="form-row-2">
@@ -137,14 +92,26 @@
               <label class="form-label" for="firstName">First Name</label>
               <div class="input-wrap">
                 <span class="input-icon">👤</span>
-                <input class="form-input" type="text" id="firstName" placeholder="Alex" required />
+                <input
+                  class="form-input"
+                  type="text"
+                  id="firstName"
+                  placeholder="Alex"
+                  required
+                />
               </div>
             </div>
             <div class="form-group">
               <label class="form-label" for="lastName">Last Name</label>
               <div class="input-wrap">
                 <span class="input-icon">👤</span>
-                <input class="form-input" type="text" id="lastName" placeholder="Rivera" required />
+                <input
+                  class="form-input"
+                  type="text"
+                  id="lastName"
+                  placeholder="Rivera"
+                  required
+                />
               </div>
             </div>
           </div>
@@ -153,16 +120,30 @@
             <label class="form-label" for="username">Username</label>
             <div class="input-wrap">
               <span class="input-icon">@</span>
-              <input class="form-input" type="text" id="username" placeholder="alex_dev" required />
+              <input
+                class="form-input"
+                type="text"
+                id="username"
+                placeholder="alex_dev"
+                required
+              />
             </div>
-            <p class="field-hint">3-20 characters, letters, numbers and _ only.</p>
+            <p class="field-hint">
+              3-20 characters, letters, numbers and _ only.
+            </p>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="email">Email Address</label>
             <div class="input-wrap">
               <span class="input-icon">✉</span>
-              <input class="form-input" type="email" id="email" placeholder="alex@devflow.io" required />
+              <input
+                class="form-input"
+                type="email"
+                id="email"
+                placeholder="alex@devflow.io"
+                required
+              />
             </div>
           </div>
 
@@ -170,8 +151,21 @@
             <label class="form-label" for="password">Password</label>
             <div class="input-wrap">
               <span class="input-icon">🔒</span>
-              <input class="form-input" type="password" id="password" placeholder="Min. 6 characters" required oninput="checkStrength(this.value)" />
-              <button type="button" class="btn-toggle-pw" onclick="togglePw('password',this)">👁</button>
+              <input
+                class="form-input"
+                type="password"
+                id="password"
+                placeholder="Min. 6 characters"
+                required
+                oninput="checkStrength(this.value)"
+              />
+              <button
+                type="button"
+                class="btn-toggle-pw"
+                onclick="togglePw('password', this)"
+              >
+                👁
+              </button>
             </div>
             <div class="strength-bar" id="strengthBar" data-level="0">
               <span></span><span></span><span></span><span></span>
@@ -180,22 +174,41 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="confirmPassword">Confirm Password</label>
+            <label class="form-label" for="confirmPassword"
+              >Confirm Password</label
+            >
             <div class="input-wrap">
               <span class="input-icon">🔒</span>
-              <input class="form-input" type="password" id="confirmPassword" placeholder="Repeat password" required />
-              <button type="button" class="btn-toggle-pw" onclick="togglePw('confirmPassword',this)">👁</button>
+              <input
+                class="form-input"
+                type="password"
+                id="confirmPassword"
+                placeholder="Repeat password"
+                required
+              />
+              <button
+                type="button"
+                class="btn-toggle-pw"
+                onclick="togglePw('confirmPassword', this)"
+              >
+                👁
+              </button>
             </div>
           </div>
 
           <div class="terms-row">
             <input type="checkbox" id="terms" />
-            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            <label for="terms"
+              >I agree to the <a href="#">Terms of Service</a> and
+              <a href="#">Privacy Policy</a></label
+            >
           </div>
 
           <button type="submit" class="btn-submit" id="submitBtn">
             <span class="btn-text">Create Account →</span>
-            <span class="btn-loading"><span class="spinner"></span> Creating account...</span>
+            <span class="btn-loading"
+              ><span class="spinner"></span> Creating account...</span
+            >
           </button>
         </form>
 
@@ -215,12 +228,30 @@
 
     <script>
       // ── Particles ──────────────────────────────────────────────────
-      const PARTICLES = ['const','fn()','{}','async','await','register','POST','201','JWT','Bearer','import','export','true','&&','null','new User()','hash()'];
-      PARTICLES.forEach(txt => {
+      const PARTICLES = [
+        'const',
+        'fn()',
+        '{}',
+        'async',
+        'await',
+        'register',
+        'POST',
+        '201',
+        'JWT',
+        'Bearer',
+        'import',
+        'export',
+        'true',
+        '&&',
+        'null',
+        'new User()',
+        'hash()',
+      ];
+      PARTICLES.forEach((txt) => {
         const el = document.createElement('span');
         el.className = 'particle';
         el.textContent = txt;
-        el.style.cssText = `left:${Math.random()*100}%;bottom:-40px;animation-duration:${10+Math.random()*15}s;animation-delay:${Math.random()*12}s;font-size:${10+Math.random()*5}px;`;
+        el.style.cssText = `left:${Math.random() * 100}%;bottom:-40px;animation-duration:${10 + Math.random() * 15}s;animation-delay:${Math.random() * 12}s;font-size:${10 + Math.random() * 5}px;`;
         document.getElementById('particles').appendChild(el);
       });
 
@@ -233,16 +264,18 @@
 
       // ── Password strength ──────────────────────────────────────────
       function checkStrength(val) {
-        const bar  = document.getElementById('strengthBar');
+        const bar = document.getElementById('strengthBar');
         const hint = document.getElementById('strengthText');
         let level = 0;
-        if (val.length >= 6)                          level = 1;
-        if (val.length >= 8 && /[A-Z]/.test(val))    level = 2;
-        if (level === 2 && /[0-9]/.test(val))         level = 3;
+        if (val.length >= 6) level = 1;
+        if (val.length >= 8 && /[A-Z]/.test(val)) level = 2;
+        if (level === 2 && /[0-9]/.test(val)) level = 3;
         if (level === 3 && /[^A-Za-z0-9]/.test(val)) level = 4;
         bar.dataset.level = val.length ? level : 0;
-        const labels = ['','Weak','Fair','Good','Strong'];
-        hint.textContent = val.length ? `Strength: ${labels[level]}` : 'Enter a password';
+        const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+        hint.textContent = val.length
+          ? `Strength: ${labels[level]}`
+          : 'Enter a password';
       }
 
       // ── Messages ───────────────────────────────────────────────────
@@ -267,20 +300,25 @@
         hideMessages();
 
         const firstName = document.getElementById('firstName').value.trim();
-        const lastName  = document.getElementById('lastName').value.trim();
-        const username  = document.getElementById('username').value.trim();
-        const email     = document.getElementById('email').value.trim();
-        const password  = document.getElementById('password').value;
-        const confirm   = document.getElementById('confirmPassword').value;
-        const agreed    = document.getElementById('terms').checked;
-        const btn       = document.getElementById('submitBtn');
+        const lastName = document.getElementById('lastName').value.trim();
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const confirm = document.getElementById('confirmPassword').value;
+        const agreed = document.getElementById('terms').checked;
+        const btn = document.getElementById('submitBtn');
 
         // ── Client-side validation ─────────────────────────────────
-        if (!firstName || !lastName) return showError('Please enter your full name.');
-        if (!username || username.length < 3) return showError('Username must be at least 3 characters.');
-        if (!/^[a-zA-Z0-9_]+$/.test(username)) return showError('Username: letters, numbers, and _ only.');
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError('Please enter a valid email address.');
-        if (password.length < 6) return showError('Password must be at least 6 characters.');
+        if (!firstName || !lastName)
+          return showError('Please enter your full name.');
+        if (!username || username.length < 3)
+          return showError('Username must be at least 3 characters.');
+        if (!/^[a-zA-Z0-9_]+$/.test(username))
+          return showError('Username: letters, numbers, and _ only.');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+          return showError('Please enter a valid email address.');
+        if (password.length < 6)
+          return showError('Password must be at least 6 characters.');
         if (password !== confirm) return showError('Passwords do not match.');
         if (!agreed) return showError('Please accept the Terms of Service.');
 
@@ -289,22 +327,30 @@
 
         try {
           // ══ الاتصال بالـ backend ══
-          const res  = await fetch('/api/v1/auth/register', {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ firstName, lastName, username, email, password }),
-          });
+          const res = await fetch(
+            'http://localhost:3000/api/v1/auth/register',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                firstName,
+                lastName,
+                username,
+                email,
+                password,
+              }),
+            },
+          );
           const data = await res.json();
 
           if (!res.ok) throw new Error(data.message || 'Registration failed.');
 
           // حفظ الـ token وبيانات اليوزر
           localStorage.setItem('token', data.token);
-          localStorage.setItem('user',  JSON.stringify(data.data.user));
+          localStorage.setItem('user', JSON.stringify(data.data.user));
 
           showSuccess('Account created! Redirecting to your dashboard…');
-          setTimeout(() => window.location.href = 'ideBoard.html', 1500);
-
+          setTimeout(() => (window.location.href = 'home.html'), 1500);
         } catch (err) {
           showError(err.message || 'Something went wrong. Please try again.');
           btn.classList.remove('loading');
@@ -319,8 +365,16 @@
       }
 
       // ── Clear on input ─────────────────────────────────────────────
-      ['firstName','lastName','username','email','password','confirmPassword']
-        .forEach(id => document.getElementById(id).addEventListener('input', hideMessages));
+      [
+        'firstName',
+        'lastName',
+        'username',
+        'email',
+        'password',
+        'confirmPassword',
+      ].forEach((id) =>
+        document.getElementById(id).addEventListener('input', hideMessages),
+      );
     </script>
   </body>
 </html>

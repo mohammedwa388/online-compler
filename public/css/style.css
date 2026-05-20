@@ -47,7 +47,6 @@
 
 .link--active {
   color: #6366f1 !important;
-  /* border-bottom: 2px solid #6366f1; */
 }
 
 .list-link li a.link--active::after {
@@ -69,9 +68,25 @@
 }
 
 .nav-icon {
-  color: #94a3b8;
-  background: none;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--text-1);
+  cursor: pointer;
+  transition:
+    all 0.15s,
+    color 0.15s;
   border: none;
+  background: transparent;
+  font-size: 16px;
+}
+.nav-icon:hover {
+  background: #334155;
+  color: #d4e4fa;
+  cursor: pointer;
 }
 
 .button-action {
@@ -82,11 +97,22 @@
   border-radius: 0.4rem;
   font-weight: 600;
 }
+.button-action:hover {
+  background-color: #818cf8;
+  cursor: pointer;
+}
 
 .img-header {
   height: 3.2rem;
   width: 3.2rem;
   border-radius: 50%;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.img-header:hover {
+  transform: scale(1.1);
+  border: 2px solid #6366f1;
 }
 
 /**************************/
@@ -137,8 +163,14 @@
   background: rgba(99, 102, 241, 0.2);
   border-radius: 1.2rem;
   filter: blur(2.4rem);
+  transition:
+    background 0.4s,
+    filter 0.4s;
 }
-
+.terminal-container:hover .terminal-glow {
+  background: rgba(99, 102, 241, 0.45);
+  filter: blur(3rem);
+}
 .terminal-window {
   position: relative;
   background-color: var(--color-surface-low);
@@ -342,7 +374,7 @@
 .feature-img {
   height: 300px;
   width: 50%;
-  background-image: url(/unnamed.png);
+  background-image: url(/./public/img/feature/test-1.png);
   opacity: 20%;
   background-size: cover;
   background-position: bottom;
@@ -528,6 +560,11 @@
   color: white;
   padding: 1.6rem 4rem;
   font-size: 1.8rem;
+}
+.btn--cta:hover {
+  background-color: #1400c8;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(13, 0, 150, 0.4);
 }
 .cta-microcopy {
   font-size: 1rem !important;

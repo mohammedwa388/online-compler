@@ -19,7 +19,6 @@ function runCode() {
   const btn = document.getElementById('runBtn');
   const terminal = document.getElementById('terminalBody');
 
-  // تغيير شكل الزرار أثناء التشغيل
   btn.textContent = '⏹ Stop';
   btn.style.background = 'var(--red)';
 
@@ -46,18 +45,16 @@ function runCode() {
 function addTerminalLine(html) {
   const body = document.getElementById('terminalBody');
   const cursor = body.querySelector('.t-cursor');
-  if (cursor) cursor.parentElement.remove(); // ازالة الcursor القديم
-
+  if (cursor) cursor.parentElement.remove();
   const div = document.createElement('div');
   div.innerHTML = html;
   body.appendChild(div);
 
-  // اضافة cursor جديد
   const cur = document.createElement('div');
   cur.innerHTML = '<span class="t-cursor"></span>';
   body.appendChild(cur);
 
-  body.scrollTop = body.scrollHeight; // scroll للآخر
+  body.scrollTop = body.scrollHeight;
 }
 
 function clearTerminal() {
@@ -83,16 +80,12 @@ function switchTermTab(el) {
   el.classList.add('active');
 }
 
-// ============================================================
-// 4. TABS - فتح وإغلاق والتبديل بينهم
-// ============================================================
 function switchTab(tab) {
   document
     .querySelectorAll('.tab')
     .forEach((t) => t.classList.remove('active'));
   tab.classList.add('active');
 
-  // تحديث الملف المختار في الشجرة
   const file = tab.dataset.file;
   document.querySelectorAll('.tree-item').forEach((item) => {
     item.classList.remove('selected');
@@ -105,7 +98,6 @@ function switchTab(tab) {
 }
 
 function openTab(name, icon) {
-  // لو التاب موجود ببساطة بنفتحه
   const existing = [...document.querySelectorAll('.tab')].find(
     (t) => t.dataset.file === name,
   );
@@ -131,16 +123,12 @@ function closeTab(e, closeBtn) {
   const wasActive = tab.classList.contains('active');
   tab.remove();
 
-  // لو كان active، نفعّل أقرب تاب
   if (wasActive) {
     const remaining = document.querySelectorAll('.tab');
     if (remaining.length > 0) switchTab(remaining[remaining.length - 1]);
   }
 }
 
-// ============================================================
-// 5. FILE TREE - فتح وإغلاق المجلدات
-// ============================================================
 function toggleFolder(item) {
   const caret = item.querySelector('.caret');
   const label = item.querySelector('.label').textContent;
